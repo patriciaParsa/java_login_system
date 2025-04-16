@@ -16,7 +16,7 @@ import lombok.AllArgsConstructor;
 @Configuration
 @AllArgsConstructor
 @EnableWebSecurity
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {@Override
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     
     private final AppUserService appUserService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -35,7 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {@Override
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(daoAuthenticationProvider())
+        auth.authenticationProvider(daoAuthenticationProvider());
     }
 
     @Bean
@@ -48,7 +48,3 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {@Override
     }
 
 }
-
-
-// 40:12
-// https://www.youtube.com/watch?v=QwQuro7ekvc
