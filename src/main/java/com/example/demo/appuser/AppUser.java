@@ -7,14 +7,14 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import jakarta.annotation.Generated;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
+import javax.annotation.Generated;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -40,25 +40,22 @@ public class AppUser implements UserDetails {
         generator = "student_sequence"
     )
     private Long id;
-    private String name;
-    private String username;
+    private String firstName;
+    private String lastName;
     private String email;
     private String password;
     @Enumerated(EnumType.STRING)
     private AppUserRole appUserRole;
-    private Boolean locked;
-    private Boolean enabled;
+    private Boolean locked = false;
+    private Boolean enabled = false;
 
 
-    public AppUser(String name, String username, String email, String password, AppUserRole appUserRole, Boolean locked,
-            Boolean enabled) {
-        this.name = name;
-        this.username = username;
+    public AppUser(String name, String username, String email, String password, AppUserRole appUserRole) {
+        this.firstName = name;
+        this.lastName = username;
         this.email = email;
         this.password = password;
         this.appUserRole = appUserRole;
-        this.locked = locked;
-        this.enabled = enabled;
     }
 
     @Override
@@ -74,7 +71,15 @@ public class AppUser implements UserDetails {
 
     @Override
     public String getUsername() {
-       return username;
+       return email;
+    }
+
+    public String getFirstName() {
+      return firstName;
+   }
+
+    public String getLastName() {
+       return lastName;
     }
 
     @Override
