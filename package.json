@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "maildev": "^2.2.1"
+  },
+  "scripts": {
+    "maildev": "maildev --web 1080 --smtp 1025"
   }
 }

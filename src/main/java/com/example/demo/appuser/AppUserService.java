@@ -1,6 +1,5 @@
 package com.example.demo.appuser;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -54,4 +53,9 @@ public class AppUserService implements UserDetailsService {
 
         return token;
     }
+
+    public int enableAppUser(String email) {
+        return appUserRepository.enableAppUser(email);
+    }
+
 }
